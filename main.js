@@ -63,20 +63,36 @@ const posts = [
 
 // ripercorro tutto l'array per assegnare i vari elementi
 let container = document.getElementById("container");
+let num = 0;
 inner ();
 let btn = document.getElementsByClassName("like-button")
 for (let index = 0; index < btn.length; index++) {
     const element = btn[index];
     element.addEventListener("click",
     function () {
+        element.classList.toggle("like-button--liked")
+
+
         let likes = posts[index].likes
-        let id = index+1
+        let id = index + 1;
         let counter = document.getElementById("like-counter-"+id )
-        counter.innerHTML = likes + 1;
-        element.classList.add("like-button--liked")
         const idArray = [];
-        idArray.push(id);
-        console.log(idArray);
+
+        if (num === 0) {
+            num++;
+            counter.innerHTML = likes + num;
+            idArray.push(id);
+            console.log(idArray);
+        } else if (num === 1){
+            num--;
+            counter.innerHTML = likes + num;
+
+        }
+      
+        
+
+        
+
     })
     
 }
