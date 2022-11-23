@@ -89,15 +89,21 @@ function inner() {
         let post = document.createElement("div");
         post.classList.add("post");
         post.innerHTML = "";
+        let data = element.created;
+        data = parseInt(data.replace('2021-',''));
+        if (element.author.image == null) {
+            nameSplit = element.author.name.split(" ");
+            text = nameSplit[0].charAt(0) + nameSplit[1].charAt(0) ;
+        }
         post.innerHTML =`
                 <div class="post__header">
                     <div class="post-meta">                    
                         <div class="post-meta__icon">
-                            <img class="profile-pic" src=${element.author.image} alt=${element.author.name}>                    
+                            <img class="profile-pic" src=${element.author.image} alt=${element.author.image == null ? text : element.author.image}>                    
                         </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${element.author.name}</div>
-                            <div class="post-meta__time">4 mesi fa</div>
+                            <div class="post-meta__time">${12-data} mesi fa</div>
                         </div>                    
                     </div>
                 </div>
